@@ -1,6 +1,6 @@
 package br.com.julio.ap1_appponto;
 
-public class Checklist {
+public class Frequencia {
     private String matricula;
     private String latitude;
     private String longitude;

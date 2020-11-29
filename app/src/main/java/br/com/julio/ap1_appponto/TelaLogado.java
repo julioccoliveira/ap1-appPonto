@@ -19,20 +19,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-import org.json.JSONObject;
-
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
-
-import cz.msebera.android.httpclient.entity.mime.Header;
 
 public class TelaLogado extends AppCompatActivity {
 
@@ -83,7 +73,7 @@ public class TelaLogado extends AppCompatActivity {
         //cria BD
         criarConexao();
         //Criando cheacklistDAO
-        ChecklistDAO checklistDAO = new ChecklistDAO(conexao);
+        FrequenciaDAO frequenciaDAO = new FrequenciaDAO(conexao);
 
         swAcidental.setChecked(false);
         btPonto.setOnClickListener(new View.OnClickListener() {
