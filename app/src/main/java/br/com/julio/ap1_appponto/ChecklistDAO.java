@@ -21,7 +21,7 @@ public class ChecklistDAO {
         contentValues.put("Latitude",chk.getLatitude());
         contentValues.put("Longitude", chk.getLongitude());
         contentValues.put("Data e hora", chk.getTimeStamp());
-        conexao.insertOrThrow("CHecklist",null, contentValues);
+        conexao.insertOrThrow("frequencia",null, contentValues);
 
     }
     public void remove(int id){

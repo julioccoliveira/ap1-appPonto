@@ -4,7 +4,7 @@ public class ScriptDLL {
     public static String getCreateTableClient(){
         StringBuilder sql = new StringBuilder();
 
-        sql.append("CREATE TABLE Checklist (");
+        sql.append("CREATE TABLE frequencia (");
         sql.append("        ID          INTEGER    PRIMARY KEY");
         sql.append("        NOT NULL,");
         sql.append("        dataHora TEXT (75)");
