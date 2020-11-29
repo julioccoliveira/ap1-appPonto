@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="matricula">Número da matrícula</string>
+    <string name="entrar">Entrar</string>
+    <string name="id">Matrícula</string>
+    <string name="matr_cula">Matrícula:</string>
+    <string name="prote_o_de_ponto_acidental">Proteção contra toque acidental</string>
+    <string name="bater_ponto">Bater ponto</string>
+    <string name="hist_rico">Histórico</string>
+</resources>

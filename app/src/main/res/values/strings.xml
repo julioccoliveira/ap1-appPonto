@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name" translatable="false">ap1-appPonto</string>
+    <string name="matricula">ID</string>
+    <string name="entrar">Log in</string>
+    <string name="id">ID</string>
+    <string name="matr_cula">ID:</string>
+    <string name="prote_o_de_ponto_acidental">Lock check in button</string>
+    <string name="bater_ponto">Check in</string>
+    <string name="hist_rico">History</string>
+</resources>
