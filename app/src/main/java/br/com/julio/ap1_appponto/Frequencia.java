@@ -1,10 +1,20 @@
 package br.com.julio.ap1_appponto;
 
 public class Frequencia {
+
+    private int id;
     private String matricula;
     private String latitude;
     private String longitude;
     private String timeStamp;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setMatricula(String matricula) {
         this.matricula = matricula;
