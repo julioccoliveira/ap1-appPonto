@@ -1,5 +1,7 @@
 package br.com.julio.ap1_appponto;
 
+import android.util.Log;
+
 public class ScriptDLL {
     public static String getCreateTableClient() {
         StringBuilder sql = new StringBuilder();
@@ -20,7 +22,7 @@ public class ScriptDLL {
 
     public static String getFrequencias() {
         StringBuilder sql = new StringBuilder();
-        sql.append("Select matricula, dataHora, local");
+        sql.append("Select *");
         sql.append(" from frequencia");
         return sql.toString();
     }

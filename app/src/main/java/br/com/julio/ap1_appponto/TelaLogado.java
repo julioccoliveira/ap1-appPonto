@@ -94,7 +94,7 @@ public class TelaLogado extends AppCompatActivity {
 
                     Frequencia frequencia = new Frequencia();
                     frequencia.setMatricula(data);
-                    frequencia.setLatitude(String.valueOf(longitude));
+                    frequencia.setLongitude(String.valueOf(longitude));
                     frequencia.setLatitude(String.valueOf(latitude));
                     frequencia.setTimeStamp(tempoAtual);
 
@@ -128,7 +128,7 @@ public class TelaLogado extends AppCompatActivity {
     private void abrirViewDados(View v) {
 
         Intent i = new Intent(this, ListViewDados.class);
-        i.putExtra("historico", lista);
+//        i.putExtra("historico", lista);
         startActivity(i);
     }
 
