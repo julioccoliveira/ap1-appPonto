@@ -1,7 +1,7 @@
 package br.com.julio.ap1_appponto;
 
 public class ScriptDLL {
-    public static String getCreateTableClient(){
+    public static String getCreateTableClient() {
         StringBuilder sql = new StringBuilder();
 
         sql.append("CREATE TABLE frequencia (");
@@ -18,18 +18,10 @@ public class ScriptDLL {
         return sql.toString();
     }
 
-    public static String getFrequencia(){
+    public static String getFrequencias() {
         StringBuilder sql = new StringBuilder();
         sql.append("Select matricula, dataHora, local");
         sql.append(" from frequencia");
-        return sql.toString();
-    }
-
-    public static String getChecklist(){
-        StringBuilder sql = new StringBuilder();
-        sql.append("Select matricula, dataHora, local");
-        sql.append(" from frequencia");
-        sql.append(" where ID = ?");
         return sql.toString();
     }
 }

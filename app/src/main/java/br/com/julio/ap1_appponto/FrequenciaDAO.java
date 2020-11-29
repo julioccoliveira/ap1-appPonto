@@ -44,13 +44,13 @@ public class FrequenciaDAO {
         contentValues.put("Data e hora", frequencia.getTimeStamp());
         String[] params = new String[1];
         params[0] = String.valueOf(frequencia.getId());
-        conexao.update("frequencia",contentValues,"ID = ?",params);
+        conexao.update("frequencia",contentValues,"ID = ?", params);
 
     }
-    public List<Frequencia> listFrequencia(){
+    public List<Frequencia> listFrequencias(){
 
         List<Frequencia> frequencias = new ArrayList<Frequencia>();
-        Cursor result = conexao.rawQuery(ScriptDLL.getFrequencia(),null);
+        Cursor result = conexao.rawQuery(ScriptDLL.getFrequencias(),null);
         if(result.getCount()>0){
             result.moveToFirst();
             do{
@@ -66,9 +66,4 @@ public class FrequenciaDAO {
         return frequencias;
 
     }
-    public Frequencia getFrequencia(int id){
-
-        return null;
-    }
-
 }
