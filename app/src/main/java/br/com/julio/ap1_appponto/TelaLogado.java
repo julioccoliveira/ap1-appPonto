@@ -36,6 +36,7 @@ public class TelaLogado extends AppCompatActivity {
 
     private SQLiteDatabase conexao;
     private DatabaseHelper databaseHelper;
+    private FrequenciaDAO frequenciaDAO;
 
 //    private final String BASE_URL = "http://worldtimeapi.org/api/ip/";
 
@@ -48,7 +49,7 @@ public class TelaLogado extends AppCompatActivity {
         btPonto = (Button) findViewById(R.id.btPonto);
         btHistorico = (Button) findViewById(R.id.btHistorico);
         final Switch swAcidental = (Switch) findViewById(R.id.swAcidental);
-        String data = getIntent().getExtras().getString("matricula", "MATRICULA");
+        final String data = getIntent().getExtras().getString("matricula", "MATRICULA");
 
         TextView textView = findViewById(R.id.tvNMatricula);
         textView.setText(data);
@@ -73,7 +74,7 @@ public class TelaLogado extends AppCompatActivity {
         //cria BD
         criarConexao();
         //Criando cheacklistDAO
-        FrequenciaDAO frequenciaDAO = new FrequenciaDAO(conexao);
+        final FrequenciaDAO frequenciaDAO = new FrequenciaDAO(conexao);
 
         swAcidental.setChecked(false);
         btPonto.setOnClickListener(new View.OnClickListener() {
@@ -82,14 +83,22 @@ public class TelaLogado extends AppCompatActivity {
                 if (!swAcidental.isChecked()){
 //                    letsDoSomeNetworking(BASE_URL);
 
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy - HH:mm:ss", Locale.getDefault());
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss", Locale.getDefault());
                     String tempoAtual = sdf.format(new Date());
 
-                    dados = tempoAtual + " Latitude: " + latitude + " Longitude: " + longitude;
+                    dados = tempoAtual + " Lat: " + latitude + " Lon: " + longitude;
 
                     lista.add(dados);
 
                     Toast.makeText(getApplicationContext(), getString(R.string.check_in_done) + dados, Toast.LENGTH_LONG).show();
+
+                    Frequencia frequencia = new Frequencia();
+                    frequencia.setMatricula(data);
+                    frequencia.setLatitude(String.valueOf(longitude));
+                    frequencia.setLatitude(String.valueOf(latitude));
+                    frequencia.setTimeStamp(tempoAtual);
+
+                    frequenciaDAO.insert(frequencia);
 
                     return;
                 } else {
