@@ -63,16 +63,13 @@ public class TelaLogado extends AppCompatActivity {
         TextView textView = findViewById(R.id.tvNMatricula);
         textView.setText(data);
 
+        //NOTA: Não colocar NADA além disso nesse bloco
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(@NonNull Location location) {
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
-
-        //cria BD
-        criarConexao();
-
             }
 
         };
@@ -83,7 +80,10 @@ public class TelaLogado extends AppCompatActivity {
         }
         locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);
 
-
+        //cria BD
+        criarConexao();
+        //Criando cheacklistDAO
+        ChecklistDAO checklistDAO = new ChecklistDAO(conexao);
 
         swAcidental.setChecked(false);
         btPonto.setOnClickListener(new View.OnClickListener() {
