@@ -7,4 +7,8 @@
     <string name="prote_o_de_ponto_acidental">Proteção contra toque acidental</string>
     <string name="bater_ponto">Bater ponto</string>
     <string name="hist_rico">Histórico</string>
+    <string name="check_in_lock">Proteção contra cliques acidentais ativa, ponto não registrado.</string>
+    <string name="check_in_done">\"Ponto realizado com sucesso em: \"</string>
+    <string name="db_conected">Banco Criado ou acessado com sucesso.</string>
+    <string name="id_missing">Você precisa preencher o campo Matrícula.</string>
 </resources>

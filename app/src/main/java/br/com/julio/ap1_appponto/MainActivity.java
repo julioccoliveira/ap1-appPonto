@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void logar(View v){
         if (etMatricula.getText().toString().equals("")){
-            Toast.makeText(getApplicationContext(),"Você precisa preencher o campo Matrícula.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.id_missing, Toast.LENGTH_LONG).show();
             etMatricula.requestFocus();
             etMatricula.setBackgroundColor(Color.MAGENTA);
 
