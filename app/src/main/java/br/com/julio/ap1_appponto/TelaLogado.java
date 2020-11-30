@@ -9,7 +9,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,15 +27,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -67,6 +59,15 @@ public class TelaLogado extends AppCompatActivity {
         final Switch swAcidental = (Switch) findViewById(R.id.swAcidental);
         final String data = getIntent().getExtras().getString("matricula", "MATRICULA");
 
+        //Garantir que já terá algum tempo salvo para salvar o ponto.
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                btPonto.setEnabled(true);
+            }
+        }, 5000);
+
         TextView textView = findViewById(R.id.tvNMatricula);
         textView.setText(data);
 
@@ -87,7 +88,7 @@ public class TelaLogado extends AppCompatActivity {
 
             return;
         }
-        locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);
+        locationManager.requestLocationUpdates("gps", 1500, 0, locationListener);
 
         //cria BD
         criarConexao();
@@ -117,7 +118,6 @@ public class TelaLogado extends AppCompatActivity {
 
                     frequenciaDAO.insert(frequencia);
 
-                    return;
                 } else {
                     Toast.makeText(getApplicationContext(), R.string.check_in_lock, Toast.LENGTH_LONG).show();
                 }
@@ -175,9 +175,9 @@ public class TelaLogado extends AppCompatActivity {
 
                 try{
 
-                    Log.d("TEMPO", "AAAA: " +response.getString("datetime"));
+//                    Log.d("TEMPO", "AAAA: " +response.getString("datetime"));
                     tempoAtual = response.getString("datetime");
-                    String format[] = tempoAtual.split("T|\\.");
+                    String[] format = tempoAtual.split("T|\\.");
                     tempoAtual = format[0] + " " + format[1];
 
                } catch (JSONException e){

@@ -1,15 +1,12 @@
 package br.com.julio.ap1_appponto;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ListViewDados extends AppCompatActivity {
@@ -25,7 +22,6 @@ public class ListViewDados extends AppCompatActivity {
         setContentView(R.layout.activity_list_view_dados);
 
         Bundle bundle = getIntent().getExtras();
-
         ArrayList<String> dados = bundle.getStringArrayList("historico");
 
         ListView historico = findViewById(R.id.listView);

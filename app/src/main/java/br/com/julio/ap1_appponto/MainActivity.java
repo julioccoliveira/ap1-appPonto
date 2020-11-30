@@ -19,6 +19,13 @@ Possíveis atualizações seriam:
 *Envio automático de ponto para algum email (RH?) ou servidor SQL
 *Salvar a matrícula do funcionário no primeiro uso, para não ter que fazer o login toda vez
 *Embelezamento do front.
+
+*MUDANÇAS EM RELAÇÃO AP1
+*Implementação do banco de dados, que infelizmente nao foi possivel realizar o import do banco para a lista no menu Histórico. Se possível gostaria de saber como fazer isso na correcao, ja que nao achei resposta.
+*O relógio agora é com base em uma API
+*Internacionalizacao das Strings e mensagens de texto
+*Botao de bater ponto inicia desabilitado durante 5 segundos, para dar tempo de ter alguma resposta da API antes de um ponto ser realizado.
+
  */
 public class MainActivity extends AppCompatActivity {
 
