@@ -12,6 +12,9 @@ import java.util.List;
 public class ListViewDados extends AppCompatActivity {
 
     private List<String> historico = new ArrayList();
+    private FrequenciaDAO frequenciaDAO;
+
+    static ArrayList<String> teste;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

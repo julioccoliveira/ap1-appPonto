@@ -7,4 +7,8 @@
     <string name="prote_o_de_ponto_acidental">Lock check in button</string>
     <string name="bater_ponto">Check in</string>
     <string name="hist_rico">History</string>
+    <string name="check_in_lock">Check in lock is active. Check in not done.</string>
+    <string name="check_in_done">"Check in made on: "</string>
+    <string name="db_conected">DB created.</string>
+    <string name="id_missing">ID field is empty.</string>
 </resources>
