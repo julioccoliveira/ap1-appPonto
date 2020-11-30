@@ -8,6 +8,11 @@ public class Frequencia {
     private String longitude;
     private String timeStamp;
 
+    @Override
+    public String toString() {
+        return "Mat:"+getMatricula() +" Data/Hora:" + getTimeStamp() + " Lat: " +getLatitude() + " Lon: "+ getLongitude();
+    }
+
     public int getId() {
         return id;
     }
@@ -47,6 +52,5 @@ public class Frequencia {
     public String getTimeStamp() {
         return timeStamp;
     }
-
 
 }

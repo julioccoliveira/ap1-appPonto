@@ -46,9 +46,6 @@ public class MainActivity extends AppCompatActivity {
             i.putExtra("matricula", data);
             startActivity(i);
 
-//            Intent intent = new Intent(this,TelaLogado.class);
-//            startActivity(intent);
-
         }
     }
 }

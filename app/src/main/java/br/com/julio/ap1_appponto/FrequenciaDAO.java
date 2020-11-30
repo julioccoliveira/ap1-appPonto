@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+import static br.com.julio.ap1_appponto.ListViewDados.teste;
+
 public class FrequenciaDAO {
 
     SQLiteDatabase conexao;

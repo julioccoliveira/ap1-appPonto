@@ -9,6 +9,8 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
@@ -19,10 +21,23 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+
+import cz.msebera.android.httpclient.Header;
 
 public class TelaLogado extends AppCompatActivity {
 
@@ -37,8 +52,9 @@ public class TelaLogado extends AppCompatActivity {
     private SQLiteDatabase conexao;
     private DatabaseHelper databaseHelper;
     private FrequenciaDAO frequenciaDAO;
+    private String tempoAtual;
 
-//    private final String BASE_URL = "http://worldtimeapi.org/api/ip/";
+    private final String BASE_URL = "http://worldtimeapi.org/api/timezone/America/Fortaleza";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +77,8 @@ public class TelaLogado extends AppCompatActivity {
             public void onLocationChanged(@NonNull Location location) {
                 latitude = location.getLatitude();
                 longitude = location.getLongitude();
+                letsDoSomeNetworking(BASE_URL);
+
             }
 
         };
@@ -81,10 +99,9 @@ public class TelaLogado extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!swAcidental.isChecked()){
-//                    letsDoSomeNetworking(BASE_URL);
 
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss", Locale.getDefault());
-                    String tempoAtual = sdf.format(new Date());
+//                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss", Locale.getDefault());
+//                    String tempoAtual = sdf.format(new Date());
 
                     dados = tempoAtual + " Lat: " + latitude + " Lon: " + longitude;
 
@@ -128,7 +145,7 @@ public class TelaLogado extends AppCompatActivity {
     private void abrirViewDados(View v) {
 
         Intent i = new Intent(this, ListViewDados.class);
-//        i.putExtra("historico", lista);
+        i.putExtra("historico", lista);
         startActivity(i);
     }
 
@@ -140,7 +157,7 @@ public class TelaLogado extends AppCompatActivity {
             databaseHelper = new DatabaseHelper(this);
             conexao = databaseHelper.getWritableDatabase();
 
-            Toast.makeText(this, R.string.db_conected,Toast.LENGTH_LONG).show();
+//            Toast.makeText(this, R.string.db_conected,Toast.LENGTH_LONG).show();
 
         }
         catch (SQLException e) {
@@ -150,5 +167,33 @@ public class TelaLogado extends AppCompatActivity {
         }
 
     }
+    private void letsDoSomeNetworking(String url) {
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(url, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+                try{
+
+                    Log.d("TEMPO", "AAAA: " +response.getString("datetime"));
+                    tempoAtual = response.getString("datetime");
+                    String format[] = tempoAtual.split("T|\\.");
+                    tempoAtual = format[0] + " " + format[1];
+
+               } catch (JSONException e){
+
+                   e.printStackTrace();
+
+               }
+
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable e, JSONObject response) {
+                Log.e("ERRO", e.toString());
+            }
+        });
+    }
+
+
 }
 
